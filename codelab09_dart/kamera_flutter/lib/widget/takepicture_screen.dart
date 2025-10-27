@@ -35,7 +35,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
       appBar: AppBar(title: const Text('Take a picture - 2341720187')),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
-        builder: (context, snapshot) {
+        builder: (context, snapshot) {    
           if (snapshot.connectionState == ConnectionState.done) {
             return CameraPreview(_controller);
           } else {
@@ -44,7 +44,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
         },
       ),
 
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton(    
         onPressed: () async {
           try {
             await _initializeControllerFuture;
