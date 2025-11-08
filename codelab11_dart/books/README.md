@@ -95,3 +95,12 @@ Apakah ada perbedaan UI dengan praktikum sebelumnya? Mengapa demikian?
 Tidak ada perbedaan UI secara visual, hanya perbedaan pada cara kerja logika programnya.
 
 ![Output](assets/13.gif)
+
+## Soal 14
+
+Apakah ada perbedaan UI dengan langkah sebelumnya? Mengapa demikian?
+
+Tidak ada perbedaan UI karena kode hanya menambah penanganan error, bukan mengubah tampilan, kecuali saat terjadi kesalahan akan muncul pesan error.
+
+![Output](assets/14.gif)
+
