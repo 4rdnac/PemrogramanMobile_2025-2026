@@ -21,3 +21,12 @@ Fungsi count() memanggil ketiganya satu per satu menggunakan await, menjumlahkan
 
 ![Output](assets/03.gif)
 
+Soal 5
+
+Jelaskan maksud kode langkah 2 tersebut!
+
+getNumber() membuat objek Completer, memanggil calculate(), lalu mengembalikan Future-nya.
+calculate() menunggu 5 detik, lalu menyelesaikan Future tersebut dengan nilai 42.
+Jadi, setelah 5 detik, pemanggil getNumber() akan menerima hasil 42.
+
+![Output](assets/04.gif)
