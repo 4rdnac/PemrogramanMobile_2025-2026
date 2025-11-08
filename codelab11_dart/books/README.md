@@ -104,3 +104,18 @@ Tidak ada perbedaan UI karena kode hanya menambah penanganan error, bukan mengub
 
 ![Output](assets/14.gif)
 
+## Soal 15
+
+![Output](assets/15.png)
+
+## Soal 16
+
+Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+
+![Output](assets/16.gif)
+
+Saat tombol ditekan, layar kembali ke NavigationFirst dan warna latar berubah sesuai tombol karena Navigator.pop(context, color) mengirimkan warna yang dipilih.
+
+Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!
+
+![Output](assets/16_2.gif)
