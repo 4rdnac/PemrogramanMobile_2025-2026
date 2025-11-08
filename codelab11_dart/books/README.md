@@ -43,3 +43,11 @@ Perbedaannya yaitu penambahan catchError untuk menampilkan pesan “An error occ
 
 ![Output](assets/06.gif)
 
+## Soal 8
+
+Jelaskan maksud perbedaan kode langkah 1 dan 4!
+
+FutureGroup butuh proses manual (add dan close), sedangkan Future.wait langsung menjalankan semua Future sekaligus.
+
+![Output](assets/07.gif)
+
