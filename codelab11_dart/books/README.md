@@ -54,3 +54,12 @@ FutureGroup butuh proses manual (add dan close), sedangkan Future.wait langsung 
 ## Soal 9
 
 ![Output](assets/08.gif)
+
+## Soal 10
+
+Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya? Jelaskan perbedaan kode langkah 1 dan 4!
+
+Hasilnya muncul teks "Exception: Something terrible happened!" dan di console "Complete".
+Perbedaannya, langkah 1 pakai then–catchError–whenComplete, sedangkan langkah 4 pakai try–catch–finally yang lebih sederhana dan mudah dibaca.
+
+![Output](assets/09.gif)

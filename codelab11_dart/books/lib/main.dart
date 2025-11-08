@@ -70,18 +70,20 @@ class _FuturePageState extends State<FuturePage> {
 
                 // returnFG();
 
-                returnError()
-                    .then((value) {
-                      setState(() {
-                        result = 'Success';
-                      });
-                    })
-                    .catchError((onError) {
-                      setState(() {
-                        result = onError.toString();
-                      });
-                    })
-                    .whenComplete(() => print('Complete'));
+                //   returnError()
+                //       .then((value) {
+                //         setState(() {
+                //           result = 'Success';
+                //         });
+                //       })
+                //       .catchError((onError) {
+                //         setState(() {
+                //           result = onError.toString();
+                //         });
+                //       })
+                //       .whenComplete(() => print('Complete'));
+                // },
+                handleError();
               },
             ),
 
@@ -169,5 +171,17 @@ class _FuturePageState extends State<FuturePage> {
   Future returnError() async {
     await Future.delayed(const Duration(seconds: 2));
     throw Exception('Something terrible happened!');
+  }
+
+  Future handleError() async {
+    try {
+      await returnError();
+    } catch (error) {
+      setState(() {
+        result = error.toString();
+      });
+    } finally {
+      print('Complete');
+    }
   }
 }
