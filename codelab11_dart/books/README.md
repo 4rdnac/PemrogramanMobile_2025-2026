@@ -1,5 +1,11 @@
 # books
 
+## Soal 1
+
+Tambahkan nama panggilan Anda pada title app sebagai identitas hasil pekerjaan Anda.
+
+![Output](assets/001.png)
+
 ## Soal 2
 
 ![Output](assets/01.png)
@@ -63,3 +69,21 @@ Hasilnya muncul teks "Exception: Something terrible happened!" dan di console "C
 Perbedaannya, langkah 1 pakai then–catchError–whenComplete, sedangkan langkah 4 pakai try–catch–finally yang lebih sederhana dan mudah dibaca.
 
 ![Output](assets/09.gif)
+
+## Soal 11
+
+Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+
+![Output](assets/11.png)
+
+## Soal 12
+
+Jika Anda tidak melihat animasi loading tampil, kemungkinan itu berjalan sangat cepat. Tambahkan delay pada method `getPosition()` dengan kode `await Future.delayed(const Duration(seconds: 3));`
+
+Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?
+
+Browser berhasil menampilkan koordinat GPS, menandakan fitur geolocator berfungsi dengan baik dan izin lokasi telah diberikan.
+
+![Output](assets/12_1.png)
+
+![Output](assets/12_2.gif)
