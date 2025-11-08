@@ -1,10 +1,10 @@
 # books
 
-Soal 2
+# Soal 2
 
 ![Output](assets/01.png)
 
-Soal 3
+# Soal 3
 
 Jelaskan maksud kode langkah 5 tersebut terkait `substring` dan `catchError`!
 
@@ -12,7 +12,7 @@ substring(0, 450) membatasi tampilan hasil hanya 450 karakter pertama, sedangkan
 
 ![Output](assets/02.gif)
 
-Soal 4
+# Soal 4
 
 Jelaskan maksud kode langkah 1 dan 2 tersebut!
 
@@ -21,7 +21,7 @@ Fungsi count() memanggil ketiganya satu per satu menggunakan await, menjumlahkan
 
 ![Output](assets/03.gif)
 
-Soal 5
+# Soal 5
 
 Jelaskan maksud kode langkah 2 tersebut!
 
@@ -30,3 +30,11 @@ calculate() menunggu 5 detik, lalu menyelesaikan Future tersebut dengan nilai 42
 Jadi, setelah 5 detik, pemanggil getNumber() akan menerima hasil 42.
 
 ![Output](assets/04.gif)
+
+# Soal 6
+
+Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!
+
+Perbedaannya yaitu penambahan catchError untuk menampilkan pesan “An error occurred” jika terjadi kesalahan.
+
+![Output](assets/95.gif)
