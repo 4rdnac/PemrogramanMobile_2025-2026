@@ -87,3 +87,11 @@ Browser berhasil menampilkan koordinat GPS, menandakan fitur geolocator berfungs
 ![Output](assets/12_1.png)
 
 ![Output](assets/12_2.gif)
+
+## Soal 13
+
+Apakah ada perbedaan UI dengan praktikum sebelumnya? Mengapa demikian?
+
+Tidak ada perbedaan UI secara visual, hanya perbedaan pada cara kerja logika programnya.
+
+![Output](assets/13.gif)
