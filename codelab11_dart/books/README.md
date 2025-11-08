@@ -119,3 +119,13 @@ Saat tombol ditekan, layar kembali ke NavigationFirst dan warna latar berubah se
 Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!
 
 ![Output](assets/16_2.gif)
+
+## Soal 17
+
+Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+
+Saat tombol diklik, dialog tertutup dan background layar berubah ke warna yang dipilih karena color diubah dan setState() dipanggil.
+
+Gantilah 3 warna pada langkah 3 dengan warna favorit Anda!
+
+![Output](assets/17_2.gif)
