@@ -51,3 +51,6 @@ FutureGroup butuh proses manual (add dan close), sedangkan Future.wait langsung 
 
 ![Output](assets/07.gif)
 
+## Soal 9
+
+![Output](assets/08.gif)
