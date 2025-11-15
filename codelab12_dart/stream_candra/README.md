@@ -45,3 +45,11 @@ Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 
 ![Output](assets/01.gif)
 
+## Soal 5
+
+Jelaskan perbedaan menggunakan listen dan await for (langkah 9) !
+
+* await for digunakan dalam fungsi async dan menunggu setiap event secara berurutan seperti loop; kode setelah loop akan berjalan setelah stream selesai.
+
+* listen langsung mendaftarkan listener pada stream dan berjalan asinkron tanpa menunggu; stream tetap aktif dan kode setelah listen langsung dieksekusi.
+
