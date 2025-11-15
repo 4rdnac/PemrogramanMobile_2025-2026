@@ -37,43 +37,40 @@ class _StreamHomePageState extends State<StreamHomePage> {
 
   late StreamTransformer transformer;
 
+  late StreamSubscription subscription;
+
   @override
   void initState() {
     numberStream = NumberStream();
     numberStreamController = numberStream.controller;
-
-    transformer = StreamTransformer<int, int>.fromHandlers(
-      handleData: (value, sink) {
-        sink.add(value * 10);
-      },
-      handleError: (error, trace, sink) {
-        sink.add(-1);
-      },
-      handleDone: (sink) => sink.close(),
-    );
-
     Stream stream = numberStreamController.stream;
 
-    stream
-        .transform(transformer)
-        .listen((event) {
-          setState(() {
-            lastNumber = event;
-          });
-        })
-        .onError((error) {
-          setState(() {
-            lastNumber = -1;
-          });
-        });
+    subscription = stream.listen((event) {
+      setState(() {
+        lastNumber = event;
+      });
+    });
+    subscription.onError((error) {
+      setState(() {
+        lastNumber = -1;
+      });
+    });
+    subscription.onDone(() {
+      print('OnDone was called');
+    });
 
     super.initState();
+  }
+
+  void stopStream() {
+    numberStreamController.close();
   }
 
   @override
   void dispose() {
     numberStreamController.close();
     super.dispose();
+    subscription.cancel();
   }
 
   void addRandomNumber() {
@@ -105,6 +102,10 @@ class _StreamHomePageState extends State<StreamHomePage> {
             ElevatedButton(
               onPressed: () => addRandomNumber(),
               child: const Text('New Random Number'),
+            ),
+            ElevatedButton(
+              onPressed: () => stopStream(),
+              child: const Text('Stop Subscription'),
             ),
           ],
         ),

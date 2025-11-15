@@ -89,3 +89,17 @@ Jelaskan maksud kode langkah 1-3 tersebut!
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 
 ![Output](assets/03.gif)
+
+## Soal 9
+
+Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!
+
+- Langkah 2: stream.listen() membuat subscription yang menerima data dari stream dan menampilkan nilai terbaru ke lastNumber.
+
+- Langkah 4: subscription.onDone() dipanggil ketika stream selesai/ditutup, lalu menampilkan pesan "OnDone was called".
+
+- Langkah 6: subscription.cancel() di dalam dispose() digunakan untuk menghentikan langganan stream agar tidak terjadi memory leak saat widget dibuang.
+
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+![Output](assets/04.gif)
