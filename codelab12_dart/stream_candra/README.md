@@ -64,7 +64,7 @@ Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 
 ![Output](assets/02.gif)
 
-# Soal 7
+## Soal 7
 
 Jelaskan maksud kode langkah 13 sampai 15 tersebut!
 
@@ -75,3 +75,17 @@ Jelaskan maksud kode langkah 13 sampai 15 tersebut!
 - Langkah 15: Mengubah tombol agar tidak lagi mengirim angka, tetapi mengirim error ke stream.
 
 Kembalikan kode seperti semula pada Langkah 15, comment addError() agar Anda dapat melanjutkan ke praktikum 3 berikutnya.
+
+## Soal 8
+
+Jelaskan maksud kode langkah 1-3 tersebut!
+
+- Langkah 1: Membuat variabel transformer untuk mengolah data stream.
+
+- Langkah 2: Mengisi transformer agar setiap nilai stream dikali 10, error jadi -1.
+
+- Langkah 3: Menerapkan transformer sehingga listener menerima data yang sudah diproses.
+
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+![Output](assets/03.gif)
