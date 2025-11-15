@@ -28,6 +28,54 @@ class StreamHomePage extends StatefulWidget {
 }
 
 class _StreamHomePageState extends State<StreamHomePage> {
+  int lastNumber = 0;
+  late StreamController<int> numberStreamController;
+  late NumberStream numberStream;
+
+  Color bgColor = Colors.blueGrey;
+  late ColorStream colorStream;
+
+  @override
+  void initState() {
+    numberStream = NumberStream();
+    numberStreamController = numberStream.controller;
+
+    Stream stream = numberStreamController.stream;
+    stream.listen((event) {
+          setState(() {
+            lastNumber = event;
+          });
+        })
+        .onError((error) {
+          setState(() {
+            lastNumber = -1;
+          });
+        });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    numberStreamController.close();
+    super.dispose();
+  }
+
+  void addRandomNumber() {
+    Random random = Random();
+    int myNum = random.nextInt(10);
+    numberStream.addNumber(myNum);
+    // numberStream.addError();
+  }
+
+  void changeColor() {
+    colorStream.getColorStream().listen((eventColor) {
+      setState(() {
+        bgColor = eventColor;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,57 +95,5 @@ class _StreamHomePageState extends State<StreamHomePage> {
         ),
       ),
     );
-  }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   colorStream = ColorStream();
-  //   changeColor();
-  // }
-
-  @override
-  void initState() {
-    numberStream = NumberStream();
-    numberStreamController = numberStream.controller;
-    Stream stream = numberStreamController.stream;
-    stream.listen((event) {
-      setState(() {
-        lastNumber = event;
-      });
-    });
-    super.initState();
-  }
-
-  Color bgColor = Colors.blueGrey;
-  late ColorStream colorStream;
-
-  void changeColor() async {
-    // await for (var eventColor in colorStream.getColorStream()) {
-    //   setState(() {
-    //     bgColor = eventColor;
-    //   });
-    // }
-    colorStream.getColorStream().listen((eventColor) {
-      setState(() {
-        bgColor = eventColor;
-      });
-    });
-  }
-
-  int lastNumber = 0;
-  late StreamController<int> numberStreamController;
-  late NumberStream numberStream;
-
-  @override
-  void dispose() {
-    numberStreamController.close();
-    super.dispose();
-  }
-
-  void addRandomNumber() {
-    Random random = Random();
-    int myNum = random.nextInt(10);
-    numberStream.addNumber(myNum);
   }
 }

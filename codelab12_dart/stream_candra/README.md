@@ -57,9 +57,21 @@ Jelaskan perbedaan menggunakan listen dan await for (langkah 9) !
 
 Jelaskan maksud kode langkah 8 dan 10 tersebut!
 
-* `initState()` untuk menghubungkan stream ke listener. Setiap angka baru yang masuk ke stream akan langsung disimpan ke lastNumber lewat setState().
-* `addRandomNumber()` untuk membuat angka acak 0–9 lalu mengirimkannya ke stream agar bisa diterima oleh listener.
+- `initState()` untuk menghubungkan stream ke listener. Setiap angka baru yang masuk ke stream akan langsung disimpan ke lastNumber lewat setState().
+- `addRandomNumber()` untuk membuat angka acak 0–9 lalu mengirimkannya ke stream agar bisa diterima oleh listener.
 
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 
 ![Output](assets/02.gif)
+
+# Soal 7
+
+Jelaskan maksud kode langkah 13 sampai 15 tersebut!
+
+- Langkah 13: Membuat fungsi untuk mengirim error ke stream.
+
+- Langkah 14: Menambahkan handler supaya jika stream mengirim error, nilai lastNumber diganti menjadi -1.
+
+- Langkah 15: Mengubah tombol agar tidak lagi mengirim angka, tetapi mengirim error ke stream.
+
+Kembalikan kode seperti semula pada Langkah 15, comment addError() agar Anda dapat melanjutkan ke praktikum 3 berikutnya.
