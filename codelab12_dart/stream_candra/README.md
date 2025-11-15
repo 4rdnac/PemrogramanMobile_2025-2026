@@ -103,3 +103,20 @@ Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 
 ![Output](assets/04.gif)
+
+## Soal 10
+
+Jelaskan mengapa error itu bisa terjadi ?
+
+Error terjadi karena stream biasa hanya boleh punya satu listener. Kamu memanggil listen() dua kali pada stream yang sama, sehingga muncul error.
+
+## Soal 11
+
+Jelaskan mengapa hal itu bisa terjadi ?
+
+Itu terjadi karena broadcast stream dapat memiliki banyak listener, dan kedua listener akan menerima event yang sama.
+
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+![Output](assets/05.gif)
+
