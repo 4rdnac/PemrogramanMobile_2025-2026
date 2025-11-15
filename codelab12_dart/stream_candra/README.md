@@ -41,28 +41,7 @@ Kode tersebut menghasilkan stream warna yang berubah setiap 1 detik, mengambil w
 
 ## Soal 4
 
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 
+![Output](assets/01.gif)
 
-## Soal 3
-
-## Soal 3
-
-## Soal 3
-
-## Soal 3
-
-## Soal 3
-
-## Soal 3
-
-## Soal 3
-
-## Soal 3
-
-## Soal 3
-
-## Soal 3
-
-```
-
-```
