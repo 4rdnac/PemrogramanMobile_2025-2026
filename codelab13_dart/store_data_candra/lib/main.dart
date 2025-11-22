@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 
 void main() {
   runApp(const MyApp());
@@ -29,10 +30,15 @@ class _MyHomePageState extends State<MyHomePage> {
   String documentsPath = '';
   String tempPath = '';
 
+  late File myFile;
+  String fileText = '';
   @override
   void initState() {
     super.initState();
-    getPaths();
+    getPaths().then((_) {
+      myFile = File('$documentsPath/pizza.txt');
+      writeFile();
+    });
   }
 
   Future<void> getPaths() async {
@@ -57,8 +63,34 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Text('Doc Path: $documentsPath'),
           Text('Temp Path: $tempPath'),
+          ElevatedButton(
+            child: const Text('Read File'),
+            onPressed: () => readFile(),
+          ),
+          Text(fileText),
         ],
       ),
     );
+  }
+
+  Future<bool> writeFile() async {
+    try {
+      await myFile.writeAsString('Candra, 2341720187');
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> readFile() async {
+    try {
+      String fileContent = await myFile.readAsString();
+      setState(() {
+        fileText = fileContent;
+      });
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 }

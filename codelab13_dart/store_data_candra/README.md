@@ -64,3 +64,23 @@ Capture hasil praktikum Anda dan lampirkan di README.
 
 ![Output](assets/06.png)
 
+## Soal 8
+
+Jelaskan maksud kode pada langkah 3 dan 7 !
+
+Langkah 3: Menyimpan teks “Candra, 2341720187” ke file pizza.txt
+
+Langkah 4: File pizza.txt dibuat otomatis saat aplikasi mulai berjalan.
+
+Langkah 5: Membaca teks yang sudah disimpan oleh writeFile() dan menyimpan isi tersebut ke fileText agar bisa tampil di layar.
+
+Langkah 6: Ketika tombol ini ditekan, fungsi readFile() dipanggil.
+
+Langkah 7:File pizza.txt dibuat dan diisi dengan nama + NIM. Ketika tombol "Read File" ditekan:
+
+- Isi file dibaca.
+- Isi tersebut ditampilkan pada layar.
+
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+![Output](assets/02.gif)
