@@ -64,6 +64,8 @@ Capture hasil praktikum Anda dan lampirkan di README.
 
 ![Output](assets/06.png)
 
+# Praktikum 6
+
 ## Soal 8
 
 Jelaskan maksud kode pada langkah 3 dan 7 !
@@ -84,3 +86,11 @@ Langkah 7:File pizza.txt dibuat dan diisi dengan nama + NIM. Ketika tombol "Read
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 
 ![Output](assets/02.gif)
+
+# Praktikum 7
+
+## Soal 9
+
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+![Output](assets/03.gif)

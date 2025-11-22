@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:io';
 
 void main() {
@@ -32,6 +33,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   late File myFile;
   String fileText = '';
+
+  final pwdController = TextEditingController();
+  String myPass = '';
+
+  final storage = const FlutterSecureStorage();
+  final myKey = 'myPass';
+
   @override
   void initState() {
     super.initState();
@@ -61,13 +69,24 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text('Doc Path: $documentsPath'),
-          Text('Temp Path: $tempPath'),
+          TextField(controller: pwdController),
           ElevatedButton(
-            child: const Text('Read File'),
-            onPressed: () => readFile(),
+            child: const Text('Save Value'),
+            onPressed: () {
+              writeToSecureStorage();
+            },
           ),
-          Text(fileText),
+            ElevatedButton(
+            child: const Text('Read Value'),
+            onPressed: () {
+              readFromSecureStorage().then((value) {
+                setState(() {
+                  myPass = value;
+                });
+              });
+            },
+          ),
+          Text(myPass),
         ],
       ),
     );
@@ -92,5 +111,14 @@ class _MyHomePageState extends State<MyHomePage> {
     } catch (e) {
       return false;
     }
+  }
+
+  Future writeToSecureStorage() async {
+    await storage.write(key: myKey, value: pwdController.text);
+  }
+
+  Future readFromSecureStorage() async {
+    String secret = await storage.read(key: myKey) ?? '';
+    return secret;
   }
 }
