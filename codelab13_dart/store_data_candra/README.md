@@ -2,12 +2,18 @@
 
 # Praktikum 1
 
-# Soal 1
+## Soal 1
 
 Tambahkan nama panggilan Anda pada title app sebagai identitas hasil pekerjaan Anda.
 
-`appBar: AppBar(title: const Text('JSON - Candra')),`
+`title: 'Flutter JSON Demo - Candra',`
 
 Gantilah warna tema aplikasi sesuai kesukaan Anda.
 
 `theme: ThemeData(primarySwatch: Colors.lime),`
+
+## Soal 2
+
+Masukkan hasil capture layar ke laporan praktikum Anda.
+
+![Output](assets/01.png)

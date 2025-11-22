@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter JSON Demo',
+      title: 'Flutter JSON Demo - Candra',
       theme: ThemeData(primarySwatch: Colors.lime),
       home: const MyHomePage(),
     );
@@ -29,7 +29,23 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('JSON - Candra')),
-      body: Container(),
+      body: Text(pizzaString),
     );
+  }
+
+  String pizzaString = '';
+  Future readJsonFile() async {
+    String myString = await DefaultAssetBundle.of(
+      context,
+    ).loadString('assets/pizzalist.json');
+    setState(() {
+      pizzaString = myString;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    readJsonFile();
   }
 }
