@@ -23,3 +23,5 @@ Masukkan hasil capture layar ke laporan praktikum Anda.
 Masukkan hasil capture layar ke laporan praktikum Anda.
 
 ![Output](assets/02.png)
+
+![Output](assets/03.png)
