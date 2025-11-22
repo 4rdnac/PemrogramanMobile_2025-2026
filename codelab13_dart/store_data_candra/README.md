@@ -43,3 +43,9 @@ Kode lebih maintainable karena menggunakan konstanta keyId, keyName, dll, sehing
 Capture hasil praktikum Anda dan lampirkan di README.
 
 ![Output](assets/05.png)
+
+## Soal 6
+
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+![Output](assets/01.gif)
