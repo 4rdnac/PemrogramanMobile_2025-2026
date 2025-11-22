@@ -26,11 +26,15 @@ Masukkan hasil capture layar ke laporan praktikum Anda.
 
 ![Output](assets/03.png)
 
+# Praktikum 2
+
 ## Soal 4
 
 Capture hasil running aplikasi Anda, kemudian impor ke laporan praktikum Anda!
 
 ![Output](assets/04.png)
+
+# Praktikum 3
 
 ## Soal 5
 
@@ -44,8 +48,19 @@ Capture hasil praktikum Anda dan lampirkan di README.
 
 ![Output](assets/05.png)
 
+# Praktikum 4
+
 ## Soal 6
 
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 
 ![Output](assets/01.gif)
+
+# Praktikum 5
+
+## Soal 7
+
+Capture hasil praktikum Anda dan lampirkan di README.
+
+![Output](assets/06.png)
+

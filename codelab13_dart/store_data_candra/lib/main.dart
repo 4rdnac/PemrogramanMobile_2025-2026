@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'dart:convert';
-import './model/pizza.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,54 +26,39 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Pizza> myPizzas = [];
-  int appCounter = 0;
+  String documentsPath = '';
+  String tempPath = '';
+
+  @override
+  void initState() {
+    super.initState();
+    getPaths();
+  }
+
+  Future<void> getPaths() async {
+    final docDir = await getApplicationDocumentsDirectory();
+    final tempDir = await getTemporaryDirectory();
+
+    setState(() {
+      documentsPath = docDir.path;
+      tempPath = tempDir.path;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shared Preferences - Candra'),
+        title: const Text('Path Provider - Candra'),
         backgroundColor: Colors.lime,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text('You have opened the app $appCounter times.'),
-            ElevatedButton(
-              onPressed: () {
-                deletePreference();
-              },
-              child: Text('Reset Counter'),
-            ),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text('Doc Path: $documentsPath'),
+          Text('Temp Path: $tempPath'),
+        ],
       ),
     );
-  }
-
-  Future<void> readAndWritePreference() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    appCounter = prefs.getInt('appCounter') ?? 0;
-    appCounter++;
-    await prefs.setInt('appCounter', appCounter);
-    setState(() {
-      appCounter = appCounter;
-    });
-  }
-
-  Future deletePreference() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.clear();
-    setState(() {
-      appCounter = 0;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    readAndWritePreference();
   }
 }
