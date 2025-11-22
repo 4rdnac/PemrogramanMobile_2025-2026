@@ -38,7 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(myPizzas[index].pizzaName),
-            subtitle: Text(myPizzas[index].description),
+            subtitle: Text(
+              '${myPizzas[index].description} - €${myPizzas[index].price}',
+            ),
           );
         },
       ),

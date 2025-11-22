@@ -25,3 +25,9 @@ Masukkan hasil capture layar ke laporan praktikum Anda.
 ![Output](assets/02.png)
 
 ![Output](assets/03.png)
+
+## Soal 4
+
+Capture hasil running aplikasi Anda, kemudian impor ke laporan praktikum Anda!
+
+![Output](assets/04.png)
