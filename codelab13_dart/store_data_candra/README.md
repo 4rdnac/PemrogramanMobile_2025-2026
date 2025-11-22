@@ -17,3 +17,9 @@ Gantilah warna tema aplikasi sesuai kesukaan Anda.
 Masukkan hasil capture layar ke laporan praktikum Anda.
 
 ![Output](assets/01.png)
+
+## Soal 3
+
+Masukkan hasil capture layar ke laporan praktikum Anda.
+
+![Output](assets/02.png)
