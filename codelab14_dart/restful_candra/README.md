@@ -57,4 +57,10 @@ Capture hasil aplikasi Anda berupa GIF di README
 
 ![Output](assets/02.gif)
 
+# Praktikum 4
 
+## Soal 4
+
+Capture hasil aplikasi Anda berupa GIF di README
+
+![Output](assets/03.gif)

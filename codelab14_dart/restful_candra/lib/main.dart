@@ -56,22 +56,38 @@ class _MyHomePageState extends State<MyHomePage> {
           final pizzas = snapshot.data ?? [];
           return ListView.builder(
             itemCount: pizzas.length,
-            itemBuilder: (context, position) {
-              final p = pizzas[position];
-              return ListTile(
-                title: Text(p.pizzaName ?? 'No Name'),
-                subtitle: Text(
-                  '${p.description ?? ''} - € ${p.price?.toString() ?? '0'}',
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          PizzaDetailScreen(pizza: p, isNew: false),
-                    ),
-                  );
+            itemBuilder: (BuildContext context, int position) {
+              final pizza = pizzas[position];
+
+              return Dismissible(
+                key: Key(position.toString()),
+                onDismissed: (direction) {
+                  HttpHelper helper = HttpHelper();
+                  final deletedId = pizza.id;
+
+                  setState(() {
+                    pizzas.removeAt(position);
+                  });
+
+                  if (deletedId != null) {
+                    helper.deletePizza(deletedId);
+                  }
                 },
+                child: ListTile(
+                  title: Text(pizza.pizzaName ?? 'No Name'),
+                  subtitle: Text(
+                    '${pizza.description ?? ''} - € ${pizza.price?.toString() ?? '0'}',
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            PizzaDetailScreen(pizza: pizza, isNew: false),
+                      ),
+                    );
+                  },
+                ),
               );
             },
           );
