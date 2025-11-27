@@ -4,6 +4,7 @@ class Pizza {
   String? description;
   double? price;
   String? imageUrl;
+  double? rating;
 
   Pizza({
     this.id,
@@ -11,6 +12,7 @@ class Pizza {
     this.description,
     this.price,
     this.imageUrl,
+    this.rating,
   });
 
   Pizza.fromJson(Map<String, dynamic> json) {
@@ -21,6 +23,9 @@ class Pizza {
         ? (json['price'] as int).toDouble()
         : json['price']?.toDouble();
     imageUrl = json['imageUrl'];
+    rating = (json['rating'] is int)
+        ? (json['rating'] as int).toDouble()
+        : json['rating']?.toDouble();
   }
 
   Map<String, dynamic> toJson() {
@@ -30,6 +35,7 @@ class Pizza {
       'description': description,
       'price': price,
       'imageUrl': imageUrl,
+      'rating': rating,
     };
   }
 }
