@@ -46,3 +46,15 @@ Field POST diperbarui
 Capture hasil aplikasi Anda berupa GIF di README
 
 ![Output](assets/01.gif)
+
+# Praktikum 3
+
+## Soal 3
+
+Ubah salah satu data dengan Nama dan NIM Anda, lalu perhatikan hasilnya di Wiremock.
+
+Capture hasil aplikasi Anda berupa GIF di README
+
+![Output](assets/02.gif)
+
+

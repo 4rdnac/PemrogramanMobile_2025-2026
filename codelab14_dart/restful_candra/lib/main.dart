@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -22,7 +24,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
   final String title;
 
   @override
@@ -30,6 +31,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final helper = HttpHelper();
+
+  Future<List<Pizza>> callPizzas() async {
+    return await helper.getPizzaList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,44 +44,51 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('JSON - Candra'),
         backgroundColor: Colors.lime,
       ),
-      body: FutureBuilder(
+      body: FutureBuilder<List<Pizza>>(
         future: callPizzas(),
-        builder: (BuildContext context, AsyncSnapshot<List<Pizza>> snapshot) {
+        builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return const Text('Something went wrong');
+            return const Center(child: Text('Something went wrong'));
           }
-          if (!snapshot.hasData) {
-            return const CircularProgressIndicator();
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
           }
+          final pizzas = snapshot.data ?? [];
           return ListView.builder(
-            itemCount: (snapshot.data == null) ? 0 : snapshot.data!.length,
-            itemBuilder: (BuildContext context, int position) {
-              final pizza = snapshot.data![position];
+            itemCount: pizzas.length,
+            itemBuilder: (context, position) {
+              final p = pizzas[position];
               return ListTile(
-                title: Text(pizza.pizzaName ?? 'No Name'),
+                title: Text(p.pizzaName ?? 'No Name'),
                 subtitle: Text(
-                  '${pizza.description ?? ''}\n€ ${pizza.price?.toString() ?? '0'}   |   Rating: ${pizza.rating?.toString() ?? '0'}',
+                  '${p.description ?? ''} - € ${p.price?.toString() ?? '0'}',
                 ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          PizzaDetailScreen(pizza: p, isNew: false),
+                    ),
+                  );
+                },
               );
             },
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add),
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const PizzaDetailScreen()),
+            MaterialPageRoute(
+              builder: (context) =>
+                  PizzaDetailScreen(pizza: Pizza(), isNew: true),
+            ),
           );
         },
       ),
     );
-  }
-
-  Future<List<Pizza>> callPizzas() async {
-    HttpHelper helper = HttpHelper();
-    List<Pizza> pizzas = await helper.getPizzaList();
-    return pizzas;
   }
 }

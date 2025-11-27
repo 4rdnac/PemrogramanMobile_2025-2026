@@ -3,7 +3,15 @@ import 'pizza.dart';
 import 'httphelper.dart';
 
 class PizzaDetailScreen extends StatefulWidget {
-  const PizzaDetailScreen({super.key});
+  final Pizza pizza;
+  final bool isNew;
+
+  const PizzaDetailScreen({
+    super.key,
+    required this.pizza,
+    required this.isNew,
+  });
+
   @override
   State<PizzaDetailScreen> createState() => _PizzaDetailScreenState();
 }
@@ -14,85 +22,19 @@ class _PizzaDetailScreenState extends State<PizzaDetailScreen> {
   final TextEditingController txtDescription = TextEditingController();
   final TextEditingController txtPrice = TextEditingController();
   final TextEditingController txtImageUrl = TextEditingController();
-  final TextEditingController txtRating = TextEditingController();
   String operationResult = '';
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Pizza Detail')),
-      body: Padding(
-        padding: const EdgeInsets.all(12),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Text(
-                operationResult,
-                style: TextStyle(
-                  backgroundColor: Colors.green[200],
-                  color: Colors.black,
-                ),
-              ),
-              const SizedBox(height: 24),
-              TextField(
-                controller: txtId,
-                decoration: const InputDecoration(hintText: 'Insert ID'),
-              ),
-              const SizedBox(height: 24),
-              TextField(
-                controller: txtName,
-                decoration: const InputDecoration(
-                  hintText: 'Insert Pizza Name',
-                ),
-              ),
-              const SizedBox(height: 24),
-              TextField(
-                controller: txtDescription,
-                decoration: const InputDecoration(
-                  hintText: 'Insert Description',
-                ),
-              ),
-              const SizedBox(height: 24),
-              TextField(
-                controller: txtPrice,
-                decoration: const InputDecoration(hintText: 'Insert Price'),
-              ),
-              const SizedBox(height: 24),
-              TextField(
-                controller: txtImageUrl,
-                decoration: const InputDecoration(hintText: 'Insert Image Url'),
-              ),
-              TextField(
-                controller: txtRating,
-                decoration: const InputDecoration(hintText: 'Insert Rating'),
-              ),
-              const SizedBox(height: 48),
-              ElevatedButton(
-                child: const Text('Send Post'),
-                onPressed: () {
-                  postPizza();
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Future postPizza() async {
-    HttpHelper helper = HttpHelper();
-    Pizza pizza = Pizza();
-    pizza.id = int.tryParse(txtId.text);
-    pizza.pizzaName = txtName.text;
-    pizza.description = txtDescription.text;
-    pizza.price = double.tryParse(txtPrice.text);
-    pizza.imageUrl = txtImageUrl.text;
-    pizza.rating = double.tryParse(txtRating.text);
-    String result = await helper.postPizza(pizza);
-    setState(() {
-      operationResult = result;
-    });
+  void initState() {
+    super.initState();
+    if (!widget.isNew) {
+      // saat edit, isi field dengan nilai pizza yang diteruskan
+      txtId.text = widget.pizza.id?.toString() ?? '';
+      txtName.text = widget.pizza.pizzaName ?? '';
+      txtDescription.text = widget.pizza.description ?? '';
+      txtPrice.text = widget.pizza.price?.toString() ?? '';
+      txtImageUrl.text = widget.pizza.imageUrl ?? '';
+    }
   }
 
   @override
@@ -102,7 +44,79 @@ class _PizzaDetailScreenState extends State<PizzaDetailScreen> {
     txtDescription.dispose();
     txtPrice.dispose();
     txtImageUrl.dispose();
-    txtRating.dispose();
     super.dispose();
+  }
+
+  Future<void> savePizza() async {
+    final helper = HttpHelper();
+
+    final pizza = Pizza(
+      id: int.tryParse(txtId.text),
+      pizzaName: txtName.text,
+      description: txtDescription.text,
+      price: double.tryParse(txtPrice.text),
+      imageUrl: txtImageUrl.text,
+    );
+
+    final result = await (widget.isNew
+        ? helper.postPizza(pizza)
+        : helper.putPizza(pizza));
+
+    setState(() {
+      operationResult = result;
+    });
+  }
+
+  Widget _textField(
+    TextEditingController c,
+    String hint, {
+    TextInputType? type,
+  }) {
+    return TextField(
+      controller: c,
+      keyboardType: type,
+      decoration: InputDecoration(
+        border: const OutlineInputBorder(),
+        hintText: hint,
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.isNew ? 'Add Pizza' : 'Edit Pizza')),
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              if (operationResult.isNotEmpty)
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(12),
+                  color: Colors.green[200],
+                  child: Text(operationResult),
+                ),
+              const SizedBox(height: 16),
+              _textField(txtId, 'Insert ID', type: TextInputType.number),
+              const SizedBox(height: 16),
+              _textField(txtName, 'Insert Pizza Name'),
+              const SizedBox(height: 16),
+              _textField(txtDescription, 'Insert Description'),
+              const SizedBox(height: 16),
+              _textField(txtPrice, 'Insert Price', type: TextInputType.number),
+              const SizedBox(height: 16),
+              _textField(txtImageUrl, 'Insert Image Url'),
+              const SizedBox(height: 24),
+              ElevatedButton(
+                onPressed: savePizza,
+                child: Text(widget.isNew ? 'Create' : 'Save'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
